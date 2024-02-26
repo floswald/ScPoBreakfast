@@ -251,19 +251,17 @@ Ideally your **entire** project is under [version control](https://git-scm.com/b
 
 #### Manifesto
 
-::: {.fragment}
+::: {.incremental}
 1. Never again will I code a latex table by hand.
-:::
-::: {.fragment}
+   
 2. Never again will I copy and paste _any kind of result_.
-:::
-::: {.fragment}
+
 3. There are _no screenshots_ in my pipeline.
-:::
-::: {.fragment}
+
 4. My codes are not _just a bunch of scripts_.
 :::
 :::
+
 ::: {.column width=1%}
 <!-- separator -->
 :::
@@ -299,7 +297,7 @@ Ideally your **entire** project is under [version control](https://git-scm.com/b
 1. [LaTeXTabulars.jl](https://github.com/tpapp/LaTeXTabulars.jl)
 2. [RegressionTables.jl](https://github.com/jmboehm/RegressionTables.jl)
 3. [R TexTables](https://github.com/setzler/textables)
-4. [R modelsummary](https://www.modelsummary.com)
+4. [R modelsummary](https://modelsummary.com)
 5. Stata outreg2
 
 :::
