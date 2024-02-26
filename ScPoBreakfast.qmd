@@ -1,0 +1,426 @@
+---
+title: "ScPo PhD Breakfast 2024"
+format: 
+    revealjs:
+        theme: _extensions/grantmcdermott/clean/clean.scss
+        logo: img/ScPo-logo.png
+        footer: "[ScPo PhD Breakfast 2024](https://floswald.github.io/ScPoBreakfast/)"
+        incremental: false
+        code-line-numbers: false
+        highlight-style: github
+        slide-number: true
+author: "Florian Oswald"
+subtitle: "Opinionated Advice served for breakfast"
+date: today
+date-format: "D MMMM, YYYY"
+---
+
+## Digital Workflow
+
+* Johannes has given a great overview.
+* I can dish out opinionated advice now 😜
+  
+. . . 
+
+* The topic was _digital workflow_
+* I'm going to change that to _workflow_ only. Most of your work is done with the help of a computer, right?
+
+. . .
+
+::: {.callout-note}
+Different people will give you different advice. You will have to find the best mix for yourself. 
+:::
+
+. . .
+
+::: {.callout-important}
+There is no point being fundamentalist. Not in life, and not when discussing workflows. ✌️
+:::
+
+# Tuesday Morning Preaching  {background-color="#40666e"}
+
+## Preaching
+
+### Investments
+
+* In research, as in life, you decide to make certain investments.
+* Some pay off, some don't: it's risky business. Investments are costly to make.
+* Huge investments towards end of life don't make much sense. 
+
+
+::: {.notes}
+* So you come and listen to different people preaching different things. 
+* Sometimes you even pay for investment advice. With croissants and coffee.
+* Subtitle to the last bullet: old people don't have any incentives to switch.
+:::
+
+
+## Preaching
+
+### My Advice
+
+1. Will say a few things about reproducibility and project setup.
+2. Will say a few words about the importance (or not?) of computational performance: _Does it matter how fast your application runs and how much effort should you dedicate to this?_
+3. Will list a few tools I find helpful. Those may not be helpful for you.
+
+# Reproducibility  {background-color="#40666e"}
+
+## Reproducibility
+
+### Project Organisation
+
+* _Folder Structure_ is a first order concern for your project.
+* There is no _best folder structure_ - as long as it's simple, intuitive and helpful.
+
+::: {.fragment}
+
+::: {.callout-tip}
+# Minimum Requirement
+
+There should be a separation along:
+
+1. Inputs: Data, parameters, etc
+2. Outputs: Numbers, tables, figures
+3. Code
+4. Paper/Report etc
+:::
+:::
+
+::: {.fragment}
+Example?
+:::
+
+
+## Reproducibility
+
+### Project Organisation: Good or Bad?
+
+::: {.columns}
+::: {.column width=45%}
+
+
+```
+.
+├── 20211107ext_2v1.do
+├── 20220120ext_2v1.do
+├── 20221101wave1.dta
+├── james
+│   └── NLSY97
+│       └── nlsy97_v2.do
+├── mary
+│   └── NLSY97
+│       └── nlsy97.do
+├── matlab_fortran
+│   ├── graphs
+│   ├── sensitivity1
+│   │   ├── data.xlsx
+│   │   ├── good_version.do
+│   │   └── script.m
+│   └── sensitivity2
+│       ├── models.f90
+│       ├── models.mod
+│       └── nrtype.f90
+├── readme.do
+├── scatter1.eps
+├── scatter1_1.eps
+├── scatter1_2.eps
+├── ts.eps
+├── wave1.dta
+└── wave2.dta
+└── wave2regs.dta
+└── wave2regs2.dta
+```
+(scroll down! 😉)
+
+:::
+::: {.column width="1%"}
+<!-- empty column to create gap -->
+:::
+::: {.column width=45%}
+
+::: {.fragment}
+
+
+#### Bad! 👎
+
+* Sub directories are not helpful
+* File names are confusing
+* code/data/output are *not* separated
+
+:::
+:::
+:::
+
+
+## Reproducibility
+
+### Project Organisation: Good 👍
+
+
+::: {.columns}
+::: {.column width=45%}
+
+
+```
+.
+├── README.md
+├── code
+│   ├── R
+│   │   ├── 0-install.R
+│   │   ├── 1-main.R
+│   │   ├── 2-figure2.R
+│   │   └── 3-table2.R
+│   ├── stata
+│   │   ├── 1-main.do
+│   │   ├── 2-read_raw.do
+│   │   ├── 3-figure1.do
+│   │   ├── 4-figure3.do
+│   │   └── 5-table1.do
+│   └── tex
+│       ├── appendix.tex
+│       └── main.tex
+├── data
+│   ├── processed
+│   └── raw
+└── output
+    ├── plots
+    └── tables
+```
+
+
+:::
+::: {.column width="1%"}
+<!-- empty column to create gap -->
+:::
+::: {.column width=45%}
+
+
+
+::: {.fragment}
+#### Good.
+
+* Meaningful sub directories
+* top level `README`
+* code/data/output are separated
+
+
+:::
+
+
+:::
+:::
+
+
+## Reproducibility
+
+### Example: [TIER Protocol](https://www.projecttier.org/tier-protocol/protocol-4-0/) structure
+
+![](img/TIER.png)
+
+
+## Reproducibility
+
+
+### Best Project Structure?
+
+<br>
+
+
+::: {.fragment}
+::: {.callout-note}
+There is no unique best way to organize your project: Make it simple, intuitive and helpful.
+:::
+:::
+
+<br>
+
+::: {.fragment}
+::: {.callout-important}
+Ideally your **entire** project is under [version control](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control). 
+:::
+:::
+
+
+## Reproducibility
+
+### Automatizing Stuff
+
+
+::: {.columns}
+::: {.column width=39%}
+
+#### Manifesto
+
+::: {.fragment}
+1. Never again will I code a latex table by hand.
+:::
+::: {.fragment}
+2. Never again will I copy and paste _any kind of result_.
+:::
+::: {.fragment}
+3. There are _no screenshots_ in my pipeline.
+:::
+::: {.fragment}
+4. My codes are not _just a bunch of scripts_.
+:::
+:::
+::: {.column width=1%}
+<!-- separator -->
+:::
+
+::: {.column width=60%}
+
+::: {.fragment}
+
+#### Action Points
+
+* I have a `run` script which runs my _entire_ pipeline.
+* I delete my `output` folder frequently. Fully reproducible anyway. 😉
+* I automatically generate my tables.
+* I write *all* output to disk.
+* I use code packaging mechanisms and unit testing.
+
+
+:::
+
+:::
+
+:::
+
+## Reproducibility
+
+<br>
+
+::: {.columns}
+::: {.column width=45%}
+
+### Table Makers
+
+1. [LaTeXTabulars.jl](https://github.com/tpapp/LaTeXTabulars.jl)
+2. [RegressionTables.jl](https://github.com/jmboehm/RegressionTables.jl)
+3. [R TexTables](https://github.com/setzler/textables)
+4. [R modelsummary](https://www.modelsummary.com)
+5. Stata outreg2
+
+:::
+
+::: {.column width=45%}
+
+::: {.fragment}
+### Code Editors
+Use at least one of those
+
+* Visual Code Studio
+* Sublime Text
+* Vim
+* Emacs
+
+:::
+:::
+:::
+
+
+## Reproducibility
+
+### Unit Tests
+
+1. The more code you write, the harder it gets to have an overview of what works and what does not.
+2. You may not even remember what _this works_ means for a component after a few months: How did you actually determine that it *does work*?
+3. You want to be sure that component works even 3 years later as intended.
+
+::: {.fragment}
+
+::: {.columns}
+::: {.column width=50%}
+```julia
+# in src/ of your julia package
+function makes_data()
+    # makes some data
+end
+```
+
+:::
+::: {.column width=50%}
+```julia
+# in /test of your julia package
+using Test
+
+# use your function
+d = makes_data()
+
+@test something_about_d == true
+```
+
+:::
+:::
+:::
+
+
+
+# Computational Performance {background-color="#40666e"}
+
+## Computational Performance
+
+<br>
+
+::: {.callout-tip}
+# Questions 1
+* How important is it to have performant code? 
+* Why does it matter and how much should you care about this?
+:::
+<br>
+
+. . .
+
+::: {.callout-note}
+# Questions 2
+* How should you approach this problem? 
+* What is there to know? 
+:::
+
+
+## Computational Performance
+
+### Is it important?
+
+* Fast code $\approx$ fast spaceship 🚀. A faster spaceship allows you to explore galaxies which are farther away. All else equal, a faster spaceship is better.
+* Of course building a fast spaceship is more complicated and harder to learn.
+* Key question: is it worth the effort to build the fast spaceship?
+* Do you need to be at the computational frontier, or not?
+
+::: {.fragment}
+
+#### What's to know?
+
+1. [https://viralinstruction.com/posts/hardware/](https://viralinstruction.com/posts/hardware/)
+2. [Guillaume Dalle's julia tips](https://gdalle.github.io/JuliaOptimizationDays2023/performance.html)
+
+:::
+
+::: {.notes}
+* looking around amongst my colleagues, only few use extremely sophisticated computational methods at the edge of scientific computing research. Still, most of them are extremely successful researchers. So, what gives?
+* If you have the intellectual gift to break down a complicated problem into a simple model, you can get a way without a lot of computational effort. I think the space of problems we can analyse in this way has been explored. 
+* My successful colleagues may come from a generation that precedes you. I have a hunch that for you guys both the breaking-down-into-small parts as well as the computational skill part will be important.
+:::
+
+
+## Computational Performance
+
+### Beware
+
+* _Nothing_ is a panacea. _Nothing_. There are just things that work, given some level of effort, and things that don't. 
+* _Parallel Programming_ is often touted as *the solution*. It's not. Find a language where it's easy to test what you are doing.
+
+::: {.fragment}
+
+::: {.callout-caution}
+# Donald Knuth: Premature Optimization is the Root of All Evil
+Programmers waste enormous amounts of time thinking about, or worrying about, the speed of noncritical parts of their programs, and these attempts at efficiency actually have a strong negative impact when debugging and maintenance are considered. We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. Yet we should not pass up our opportunities in that critical 3%.
+:::
+:::
+
+::: {.fragment}
+👉 First: make sure it's **correct**, then worry about making it *fast*.
+
+👉 Unit Tests!
+:::
